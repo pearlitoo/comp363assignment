@@ -1,0 +1,48 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+
+{% block title %}Edit user details{% endblock %}
+
+{% block content %}
+
+<p>this is the edit personal page</p>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<form  action="#" method = "POST" name="details">
+    <label>First name:</label>
+    <input type="text" value={{FirstName}} name="FirstName" required minlength="1" maxlength="100"/>
+    <br> 
+    <br> 
+    <label>Last name:</label>
+    <input type="text" value={{LastName}} name="LastName" required minlength="1" maxlength="100"/>
+    <br> 
+    <br> 
+    <label>Email address:</label>
+    <input type="email" value={{EmailAddress}} name="EmailAddress" required minlength="4" maxlength="100"/> <!--min and max age could be another input control,should not exist already in database-->
+    <br> 
+    <br> 
+    <label>Phone number:</label>
+    <input type="tel" value={{PhoneNumber}} name="PhoneNumber" required minlength="9" maxlength="20"/> <!--phone number should have first two or 3 digits in brackets, a space, digits, a dash then 4 spaces, perhaps if the format was close enough the code could put it into this format automatically, should not exist already in database-->
+    <br> 
+    <br> 
+    <label>Passport number:</label>
+    <input type="text" value={{PassportNumber}} name="PassportNumber" required minlength="8" maxlength="12"/> <!--should probably always only be 10 characters? 3 letters, 7 numbers, should not exist already in database-->
+    <br> 
+    <br> 
+    <label>Date of birth:</label>
+    <input type="date" value={{DateOfBirth}} name="DateOfBirth" required/>
+    <br>
+    <br> 
+    <input type ="submit" value="Click to confirm changes"/>
+</form>
+
+
+{% endblock %}

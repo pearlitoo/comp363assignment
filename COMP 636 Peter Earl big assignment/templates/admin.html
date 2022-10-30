@@ -1,0 +1,26 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+
+{% block title %}Admin page{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<form  action="#" method = "POST" name="AdminAccount">
+    <label for="AdminAccount">Please select your name to login to your admin account</label>
+    <select name="AdminAccount" id="AdminAccount">
+        {% for  EmailAddress in select_result: %}
+            <option name=AdminAccount>{{EmailAddress[0]}}</option>
+        {% endfor %}
+    </select>
+    <input type ="submit" value="LOGIN"/>
+</form>
+
+{% endblock %}

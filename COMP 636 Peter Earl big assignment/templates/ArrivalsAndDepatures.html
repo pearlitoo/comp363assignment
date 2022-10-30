@@ -1,0 +1,69 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+{% block title %}Arrivals and Depatures{% endblock %}
+
+
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+        <title>Query Result</title>
+<body>
+    <label for="ArrAndDep">Select an airport:</label>
+    <form method="GET" action="">
+        <select name="airport" id="airport">
+        <option value="BHE">Blenheim Airport</option>
+        <option value="CHC">Christchurch Airport</option>
+        <option value="HKK">Hokitika Airport</option>
+        <option value="NSN">Nelson Airport</option>
+        <option value="PCN">Picton Aerodrome</option>
+        <option value="PMR">Palmerston North Airport</option>
+        <option value="PPQ">Kapiti Coast Airport</option>
+        <option value="WAG">Whanganui Airport</option>
+        <option value="WLG">Wellington Airport</option>
+        </select>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <h1>Query Result</h1>
+    <table class="table table-hover">
+        Destination Airport
+    <thread>
+        <tr>
+        <th>{{dbcols[0]}}</th><th>{{dbcols[1]}}</th><th>{{dbcols[2]}}</th><th>{{dbcols[3]}}</th><th>{{dbcols[4]}}</th><th>{{dbcols[5]}}</th><th>{{dbcols[6]}}</th><th>{{dbcols[7]}}</th><th>{{dbcols[8]}}</th>
+        </tr>
+    </thread>
+        <tbody>
+            {% for result in dbresult %}
+            <tr>
+                <td>{{result[0]}}</td><td>{{result[1]}}</td><td>{{result[2]}}</td><td>{{result[3]}}</td><td>{{result[4]}}</td><td>{{result[5]}}</td><td>{{result[6]}}</td><td>{{result[7]}}</td><td>{{result[8]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        Source Airport
+        <thread>
+            <tr>
+            <th>{{dbcols2[0]}}</th><th>{{dbcols2[1]}}</th><th>{{dbcols2[2]}}</th><th>{{dbcols2[3]}}</th><th>{{dbcols2[4]}}</th><th>{{dbcols2[5]}}</th><th>{{dbcols2[6]}}</th><th>{{dbcols2[7]}}</th><th>{{dbcols2[8]}}</th>
+            </tr>
+        </thread>
+            <tbody>
+                {% for result in dbresult2 %}
+                <tr>
+                    <td>{{result[0]}}</td><td>{{result[1]}}</td><td>{{result[2]}}</td><td>{{result[3]}}</td><td>{{result[4]}}</td><td>{{result[5]}}</td><td>{{result[6]}}</td><td>{{result[7]}}</td><td>{{result[8]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
+{% endblock %}

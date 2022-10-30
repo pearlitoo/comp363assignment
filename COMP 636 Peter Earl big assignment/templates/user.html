@@ -1,0 +1,67 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+
+{% block title %}User page{% endblock %}
+
+{% block content %}
+
+
+    
+<form action="{{ url_for('bookings')}}">
+    <input type="submit" value="Book flight" />
+</form>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<h1>Your details</h1>
+<table class="table table-hover">
+<br>
+Personal
+<thread>
+    <tr>
+    <th>{{dbcols[0]}}</th><th>{{dbcols[1]}}</th><th>{{dbcols[2]}}</th><th>{{dbcols[3]}}</th><th>{{dbcols[4]}}</th><th>{{dbcols[5]}}</th><th>{{dbcols[6]}}</th><th>{{dbcols[7]}}</th><th>{{dbcols[8]}}</th>
+    </tr>
+</thread>
+    <tbody>
+        {% for result in dbresult %}
+        <tr>
+            <td>{{result[0]}}</td><td>{{result[1]}}</td><td>{{result[2]}}</td><td>{{result[3]}}</td><td>{{result[4]}}</td><td>{{result[5]}}</td><td>{{result[6]}}</td><td>{{result[7]}}</td><td>{{result[8]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form action="{{ url_for('editpersonal')}}">
+    <input type="submit" value="edit personal details" />
+</form>
+
+<table class="table table-hover">
+    <br>
+    Flights
+    <thread>
+        <tr>
+        <th>{{dbcols2[0]}}</th><th>{{dbcols2[1]}}</th><th>{{dbcols2[2]}}</th><th>{{dbcols2[3]}}</th><th>{{dbcols2[4]}}</th><th>{{dbcols2[5]}}</th><th>{{dbcols2[6]}}</th><th>{{dbcols2[7]}}</th><th>{{dbcols2[8]}}</th><th>{{dbcols2[9]}}</th><th>{{dbcols2[10]}}</th><th>{{dbcols2[11]}}</th><th>{{dbcols2[12]}}</th><th>{{dbcols2[13]}}</th>
+        </tr>
+    </thread>
+        <tbody>
+            {% for result in dbresult2 %}
+            <tr>
+                <td>{{result[0]}}</td><td>{{result[1]}}</td><td>{{result[2]}}</td><td>{{result[3]}}</td><td>{{result[4]}}</td><td>{{result[5]}}</td><td>{{result[6]}}</td><td>{{result[7]}}</td><td>{{result[8]}}</td><td>{{result[9]}}</td><td>{{result[10]}}</td><td>{{result[11]}}</td><td>{{result[12]}}</td><td>{{result[13]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<form action="{{ url_for('bookings')}}">
+    <input type="submit" value="edit current bookings" />
+</form>
+
+
+
+{% endblock %}

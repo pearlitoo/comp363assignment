@@ -1,0 +1,64 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+
+{% block title %}Flight details{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+
+
+
+
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  
+
+    <h1>Flight list</h1>
+    <p>Start typing to search for any field you want:</p>  
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>{{dbcols[0]}}</th><th>{{dbcols[1]}}</th><th>{{dbcols[2]}}</th><th>{{dbcols[3]}}</th><th>{{dbcols[4]}}</th><th>{{dbcols[5]}}</th><th>{{dbcols[6]}}</th><th>{{dbcols[7]}}</th><th>{{dbcols[8]}}</th><th>{{dbcols[9]}}</th><th>{{dbcols[10]}}</th><th>{{dbcols[11]}}</th><th>{{dbcols[12]}}</th><th>{{dbcols[13]}}</th><th>{{dbcols[14]}}</th><th>{{dbcols[15]}}</th><th>{{dbcols[16]}}</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        {% for result in dbresult %}
+        <tr>
+            <td><a method ="GET" href="/flightdetails?flightID={{result[0]}}" >{{result[0]}}</a></td><td>{{result[1]}}</td><td>{{result[2]}}</td><td>{{result[3]}}</td><td>{{result[4]}}</td><td>{{result[5]}}</td><td>{{result[6]}}</td><td>{{result[7]}}</td><td>{{result[8]}}</td><td>{{result[9]}}</td><td>{{result[10]}}</td><td>{{result[11]}}</td><td>{{result[12]}}</td><td>{{result[13]}}</td><td>{{result[14]}}</td><td>{{result[15]}}</td><td>{{result[16]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    
+ 
+  
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+  
+  </body>
+
+
+{% endblock %}

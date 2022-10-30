@@ -1,0 +1,58 @@
+<!--Peter Earl 1129663  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo_blue.jpg')}}" alt="alternatetext"> <!-- TODO doesnt display after a post request? need to add in post method somewhere-->
+    </header>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('home')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('ArrivalsAndDepatures')}}">ArrivalsAndDepatures</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('register')}}">Register a new account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login')}}" >login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('admin')}}" >admin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout')}}" >logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+    <div class="'body-content">
+        {% block content %}
+        {% endblock content %}
+        <footer class="footer">
+          <br>
+            <p>Air Whakatu - come fly with us!<br/>
+            123 Cessna Lane, Tahunanui, Nelson 7011<br/>
+            fly@airwhakatu.co.nz<br/>
+            03 555 1234
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

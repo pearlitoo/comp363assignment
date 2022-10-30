@@ -1,0 +1,23 @@
+<!--Peter Earl 1129663  -->
+{% extends "base.html" %}
+
+{% block title %}Admin page{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<form action="{{ url_for('passengerdetails')}}" method = "POST" name="passenger details">
+    <input type ="submit" value="Click to view passenger details"/>
+</form>
+<br>
+<form action="{{ url_for('flightlist')}}" method = "POST" name="flight list">
+    <input type ="submit" value="Click to view flight list"/>
+</form>
+{% endblock %}
